@@ -21,4 +21,4 @@ jobs:
         echo Git-FTP: Installed!
         git config git-ftp.syncroot .
         echo Git-FTP: git-ftp.syncroot changed
-        sudo git ftp init --user ${{ secrets.DEPLOY_USER_TEST }} --passwd ${{ secrets.DEPLOY_PASSWORD_TEST }} ${{ secrets.DEPLOY_TEST }}/www
+        sudo git ftp push --user ${{ secrets.DEPLOY_USER_TEST }} --passwd ${{ secrets.DEPLOY_PASSWORD_TEST }} ${{ secrets.DEPLOY_TEST }}/www
