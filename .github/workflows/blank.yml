@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v1
+    - name: Run a multi-line script
+      run: |
+        sudo apt-get -y update
+        sudo apt-get -y install git
+        echo Git: Installed!
+        sudo apt-get -y install git-ftp
+        echo Git-FTP: Installed!
+        git config git-ftp.syncroot .
+        echo Git-FTP: git-ftp.syncroot changed
+        sudo git ftp init --user ${{ secrets.DEPLOY_USER_TEST }} --passwd ${{ secrets.DEPLOY_PASSWORD_TEST }} ${{ secrets.DEPLOY_TEST }}/www
